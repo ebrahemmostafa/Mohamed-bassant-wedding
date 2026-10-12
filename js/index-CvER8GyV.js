@@ -31679,26 +31679,6 @@ function E3() {
                                     onChange: C => x(_, C.target.value),
                                     className: "bg-ivory border-[#c5a46d]/30 text-sage-dark placeholder:text-sage-dark/50 focus:border-[#c5a46d]",
                                     placeholder: e("rsvp.name")
-                                }), _ === 0 && h.jsx(Fr, {
-                                    type: "email",
-                                    required: !0,
-                                    value: E.email,
-                                    onChange: C => v(_, C.target.value),
-                                    className: "bg-ivory border-[#c5a46d]/30 text-sage-dark placeholder:text-sage-dark/50 focus:border-[#c5a46d]",
-                                    placeholder: e("rsvp.email")
-                                }), h.jsxs("div", {
-                                    className: "space-y-2",
-                                    children: [h.jsx(ht, {
-                                        htmlFor: `dietary-${_}`,
-                                        className: "text-sm text-sage-dark/80",
-                                        children: e("rsvp.dietary")
-                                    }), h.jsx(Fr, {
-                                        id: `dietary-${_}`,
-                                        value: E.dietaryRequirements,
-                                        onChange: C => y(_, C.target.value),
-                                        className: "bg-ivory border-[#c5a46d]/30 text-sage-dark placeholder:text-sage-dark/50 focus:border-[#c5a46d]",
-                                        placeholder: e("rsvp.dietaryPlaceholder")
-                                    })]
                                 })]
                             }, _))
                         })]
@@ -32006,13 +31986,6 @@ const P3 = "./assets/images/floral-vase-6x28LN74.png",
                     src: N3,
                     alt: "",
                     className: "w-16 md:w-20 h-auto opacity-80"
-                })
-            }), h.jsx(f4, {}), h.jsx("div", {
-                className: "bg-ivory flex justify-center py-16 md:py-20",
-                children: h.jsx("img", {
-                    src: A3,
-                    alt: "",
-                    className: "w-24 md:w-32 h-auto opacity-80"
                 })
             }), h.jsx("div", {
                 className: "bg-ivory w-full overflow-hidden pb-16 md:pb-20",
