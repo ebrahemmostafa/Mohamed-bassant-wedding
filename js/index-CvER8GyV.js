@@ -16201,7 +16201,7 @@ BIC/SWIFT: XXXXXXXXXX`,
             "confirm.lookForward": "We look forward to seeing you on:",
             "confirm.addCalendar": "Add to Calendar",
             "confirm.plansChange": "If your plans change and you can no longer attend, please let us know as soon as possible.",
-            "footer.madeBy": ""
+            "footer.madeBy": "Made with love by"
         }
     },
     yE = g.createContext(void 0);
@@ -31829,11 +31829,11 @@ function _3({
             }), h.jsxs("p", {
                 className: "text-sm text-sage-dark/60 mt-12 font-body font-medium",
                 children: [r("footer.madeBy"), " ", h.jsx("a", {
-                    href: "",
+                    href: "https://ajwa2-collection.vercel.app/",
                     target: "_blank",
                     rel: "noopener noreferrer",
                     className: "hover:text-gold transition-colors underline underline-offset-2 font-semibold",
-                    children: ""
+                    children: "Ajwaa"
                 })]
             })]
         })
