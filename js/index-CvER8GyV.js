@@ -31996,13 +31996,6 @@ const P3 = "./assets/images/floral-vase-6x28LN74.png",
                     alt: "",
                     className: "w-16 md:w-20 h-auto opacity-80"
                 })
-            }), h.jsx(u4, {}), h.jsx("div", {
-                className: "bg-ivory flex flex-col items-center py-16 md:py-20",
-                children: h.jsx("img", {
-                    src: R3,
-                    alt: "",
-                    className: "w-24 md:w-32 h-auto opacity-80"
-                })
             }), h.jsx(f4, {}), h.jsx("div", {
                 className: "bg-ivory flex justify-center py-16 md:py-20",
                 children: h.jsx("img", {
@@ -32058,7 +32051,7 @@ const P3 = "./assets/images/floral-vase-6x28LN74.png",
                     }, `gb-${n}`))]
                 })
             }), h.jsx(o4, {
-                enabled: !0
+                enabled: !1
             }), h.jsx("div", {
                 className: "bg-ivory flex justify-center py-10 md:py-14",
                 children: h.jsx("img", {
