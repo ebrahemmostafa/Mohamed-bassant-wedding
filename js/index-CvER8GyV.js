@@ -31203,7 +31203,7 @@ function x3() {
             };
             const {
                 error: n
-            } = await rd.from("rsvps").insert(r);
+            } = await rd.from("mb_rsvps").insert(r);
             if (n) throw n;
             return {
                 isUpdate: !1

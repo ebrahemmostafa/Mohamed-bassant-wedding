@@ -121,7 +121,7 @@
     let passcode = "", rows = [], filter = "all";
 
     async function fetchRsvps(code) {
-      const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/get_rsvps`, {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/get_mb_rsvps`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
