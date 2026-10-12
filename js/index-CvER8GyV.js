@@ -21903,7 +21903,7 @@ const FF = {
         ...VF
     },
     te = zL(UF, n$),
-    BF = "./assets/images/hero-venue.jpg";
+    BF = "./assets/videos/hero-venue.mp4";
 
 function zF({
     name1: e,
@@ -21921,8 +21921,20 @@ function zF({
         className: "relative min-h-screen flex flex-col overflow-hidden bg-white",
         children: [h.jsxs("div", {
             className: "absolute inset-0 overflow-hidden",
-            children: [h.jsx("img", {
-                alt: "",
+            children: [h.jsx("video", {
+                autoPlay: !0,
+                muted: !0,
+                loop: !0,
+                playsInline: !0,
+                poster: "./assets/images/hero-venue.jpg",
+                ref: el => {
+                    if (!el || el.__autoplay) return;
+                    el.__autoplay = !0, el.muted = !0, el.setAttribute("muted", "");
+                    const p = () => {
+                        el.paused && el.play().catch(() => {})
+                    };
+                    p(), el.addEventListener("loadeddata", p), el.addEventListener("canplay", p), document.addEventListener("visibilitychange", p), [300, 1e3, 2500, 5e3, 1e4].forEach(d => setTimeout(p, d))
+                },
                 className: "absolute inset-0 w-full h-full object-cover",
                 style: {
                     objectPosition: "center 60%"
@@ -31848,8 +31860,8 @@ function _3({
         })
     })
 }
-const C3 = "./assets/videos/intro-video-new-XmwQeafK.mp4",
-    Mw = "./assets/images/intro-poster-new-BU7qGwfU.jpg",
+const C3 = "./assets/videos/intro-video-mb.mp4",
+    Mw = "./assets/images/intro-poster-mb.jpg",
     k3 = ({
         onEnter: e,
         onStartMusic: t
