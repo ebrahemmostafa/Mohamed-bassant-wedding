@@ -16113,16 +16113,17 @@ const lD = {
             "events.subtitle": "Where we celebrate",
             "events.date": "6 December 2026",
             "events.openMaps": "Open in Maps",
-            "program.title": "Day Programme",
+            "program.title": "Wedding Reception Timeline",
             "program.date": "6 December 2026",
-            "program.katb": "Katb El Ketab",
-            "program.party": "Wedding Celebration",
+            "program.katb": "Katb Ketab Ceremony",
+            "program.party": "First Dance & Wedding Celebration",
             "program.buffet": "Buffet",
+            "program.photos": "Photography with Family & Friends",
             "program.arrival": "Arrival",
             "program.ceremony": "Ceremony",
             "program.cocktails": "Cocktails",
             "program.dinner": "Dinner",
-            "program.cake": "Cutting the Cake",
+            "program.cake": "Cutting Wedding Cake & Buffet",
             "program.finish": "Finish",
             "dress.title": "Dress Code",
             "dress.men": "Men",
@@ -22086,7 +22087,7 @@ function WF({
         })
     })
 }
-const HF = "./assets/audio/you-are-my-sunshine.mp4";
+const HF = "./assets/audio/perfect.mp4";
 let dt = null,
     uw = !1;
 
@@ -22502,20 +22503,20 @@ function s4() {
     const {
         t: e
     } = At(), t = [{
-        time: "2:00 – 3:00 PM",
-        labelKey: "program.katb",
+        time: "2:00 – 3:30 PM",
+        labelKey: "program.party",
         side: "right"
     }, {
-        time: "3:00 – 4:00 PM",
-        labelKey: "program.party",
+        time: "3:30 – 4:30 PM",
+        labelKey: "program.katb",
         side: "left"
     }, {
-        time: "4:00 – 4:15 PM",
+        time: "4:30 – 5:30 PM",
         labelKey: "program.cake",
         side: "right"
     }, {
-        time: "4:30 – 5:30 PM",
-        labelKey: "program.buffet",
+        time: "5:30 – 6:00 PM",
+        labelKey: "program.photos",
         side: "left"
     }];
     return h.jsx("section", {
