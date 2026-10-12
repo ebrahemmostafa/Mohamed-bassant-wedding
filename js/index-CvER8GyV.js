@@ -31839,8 +31839,8 @@ function _3({
         })
     })
 }
-const C3 = "./assets/videos/intro-video-mb.mp4",
-    Mw = "./assets/images/intro-poster-mb.jpg",
+const C3 = "./assets/videos/intro-video-mb2.mp4",
+    Mw = "./assets/images/intro-poster-mb2.jpg",
     k3 = ({
         onEnter: e,
         onStartMusic: t
