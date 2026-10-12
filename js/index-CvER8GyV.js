@@ -21903,7 +21903,7 @@ const FF = {
         ...VF
     },
     te = zL(UF, n$),
-    BF = "./assets/videos/hero-venue.mp4";
+    BF = "./assets/videos/hero-video-BkP1eoiB.mp4";
 
 function zF({
     name1: e,
@@ -21926,7 +21926,6 @@ function zF({
                 muted: !0,
                 loop: !0,
                 playsInline: !0,
-                poster: "./assets/images/hero-venue.jpg",
                 ref: el => {
                     if (!el || el.__autoplay) return;
                     el.__autoplay = !0, el.muted = !0, el.setAttribute("muted", "");
@@ -21936,9 +21935,6 @@ function zF({
                     p(), el.addEventListener("loadeddata", p), el.addEventListener("canplay", p), document.addEventListener("visibilitychange", p), [300, 1e3, 2500, 5e3, 1e4].forEach(d => setTimeout(p, d))
                 },
                 className: "absolute inset-0 w-full h-full object-cover",
-                style: {
-                    objectPosition: "center 60%"
-                },
                 src: BF
             }), h.jsx("div", {
                 className: "absolute inset-0 bg-black/30"
@@ -31185,8 +31181,8 @@ function y3() {
     return t ? parseInt(t[1], 10) <= 18 : !1
 }
 y3() && console.warn("⚠️  Node.js 18 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 20 or later. For more information, visit: https://github.com/orgs/supabase/discussions/37217");
-const v3 = "https://etxixznvxwjjkivempzk.supabase.co",
-    w3 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV0eGl4em52eHdqamtpdmVtcHprIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE3MTY4NTYsImV4cCI6MjA4NzI5Mjg1Nn0.DAZmYr0Q-JQ_DpOqyNQalAzEm-yEauvX0aRRo3oDV4M",
+const v3 = "https://jcuqwcwkowtjxcykstlf.supabase.co",
+    w3 = "sb_publishable_BFtrH3u_sv9zat6B9SALyw_nS7Pajaa",
     rd = g3(v3, w3, {
         auth: {
             storage: localStorage,
@@ -31199,13 +31195,16 @@ function x3() {
     return iE({
         mutationFn: async e => {
             const {
-                data: t,
+                website: t,
+                ...r
+            } = e;
+            if (t) return {
+                isUpdate: !1
+            };
+            const {
                 error: n
-            } = await rd.functions.invoke("submit-rsvp", {
-                body: e
-            });
+            } = await rd.from("rsvps").insert(r);
             if (n) throw n;
-            if (t != null && t.error) throw new Error(t.error);
             return {
                 isUpdate: !1
             }
@@ -32012,13 +32011,6 @@ const P3 = "./assets/images/floral-vase-6x28LN74.png",
                 className: "bg-ivory flex justify-center py-16 md:py-20",
                 children: h.jsx("img", {
                     src: A3,
-                    alt: "",
-                    className: "w-24 md:w-32 h-auto opacity-80"
-                })
-            }), h.jsx(h4, {}), h.jsx("div", {
-                className: "bg-ivory flex justify-center py-16 md:py-20",
-                children: h.jsx("img", {
-                    src: j3,
                     alt: "",
                     className: "w-24 md:w-32 h-auto opacity-80"
                 })

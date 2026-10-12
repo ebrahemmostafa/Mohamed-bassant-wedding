@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>RSVP Responses · Mohamed &amp; Bassant</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ivory: hsl(40 37% 96%);
+      --paper: #fff;
+      --gold: hsl(38 43% 60%);
+      --gold-soft: hsl(38 35% 50%);
+      --sage-dark: hsl(33 47% 35%);
+      --ink: hsl(33 35% 22%);
+      --muted: hsl(33 20% 45%);
+      --line: hsl(38 43% 60% / .25);
+      --yes: hsl(140 30% 38%);
+      --no: hsl(8 45% 48%);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--ivory); color: var(--ink);
+      font-family: "Cormorant Garamond", Georgia, serif; font-size: 18px;
+    }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 48px 16px 64px; }
+    h1 {
+      font-family: "Great Vibes", cursive; font-weight: 400; color: var(--sage-dark);
+      font-size: clamp(44px, 9vw, 72px); text-align: center; margin: 0 0 4px;
+    }
+    .sub { text-align: center; letter-spacing: .3em; text-transform: uppercase; font-size: 13px; color: var(--muted); margin-bottom: 36px; }
+    .card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 8px 30px hsl(33 40% 30% / .06); }
+
+    /* Lock screen */
+    #lock { max-width: 380px; margin: 0 auto; padding: 32px 28px; text-align: center; }
+    #lock p { margin: 0 0 18px; color: var(--muted); font-style: italic; }
+    #lock input {
+      width: 100%; font: inherit; font-size: 26px; letter-spacing: .5em; text-align: center;
+      padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--ivory); color: var(--ink);
+    }
+    #lock input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+    button {
+      font: inherit; font-size: 14px; letter-spacing: .2em; text-transform: uppercase; cursor: pointer;
+      background: var(--sage-dark); color: #fff; border: 0; border-radius: 999px; padding: 12px 26px; margin-top: 16px;
+    }
+    button.ghost { background: transparent; color: var(--sage-dark); border: 1px solid var(--line); margin-top: 0; padding: 8px 18px; font-size: 12px; }
+    button:disabled { opacity: .6; cursor: default; }
+    .err { color: var(--no); min-height: 1.4em; margin-top: 12px; font-size: 16px; }
+
+    /* Dashboard */
+    #board { display: none; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+    .stat { padding: 18px 12px; text-align: center; }
+    .stat b { display: block; font-size: 36px; font-weight: 500; color: var(--sage-dark); line-height: 1.1; }
+    .stat span { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+    .bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .filters { display: flex; gap: 6px; flex-wrap: wrap; }
+    .filters button.on { background: var(--sage-dark); color: #fff; border-color: var(--sage-dark); }
+    #search { font: inherit; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); min-width: 0; flex: 1 1 200px; max-width: 280px; }
+    .list { display: grid; gap: 12px; }
+    .rsvp { padding: 18px 20px; }
+    .rsvp .top { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+    .rsvp h3 { margin: 0; font-size: 22px; font-weight: 600; color: var(--ink); overflow-wrap: anywhere; }
+    .pill { font-size: 12px; letter-spacing: .15em; text-transform: uppercase; padding: 4px 12px; border-radius: 999px; white-space: nowrap; }
+    .pill.yes { background: hsl(140 30% 38% / .12); color: var(--yes); }
+    .pill.no { background: hsl(8 45% 48% / .12); color: var(--no); }
+    .meta { color: var(--muted); font-size: 15px; margin-top: 4px; }
+    .msg { margin: 12px 0 0; padding: 12px 14px; background: var(--ivory); border-left: 2px solid var(--gold); border-radius: 6px; font-style: italic; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .diet { margin-top: 8px; font-size: 16px; overflow-wrap: anywhere; }
+    .empty { text-align: center; color: var(--muted); font-style: italic; padding: 40px 0; }
+
+    @media (max-width: 640px) {
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      #search { max-width: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Mohamed &amp; Bassant</h1>
+    <div class="sub">RSVP Responses</div>
+
+    <form id="lock" class="card" autocomplete="off">
+      <p>Enter the passcode to view the guest responses.</p>
+      <input id="code" type="password" inputmode="numeric" maxlength="12" aria-label="Passcode" autofocus>
+      <button id="go" type="submit">View responses</button>
+      <div id="err" class="err" role="alert"></div>
+    </form>
+
+    <section id="board">
+      <div class="stats">
+        <div class="card stat"><b id="sYes">0</b><span>Attending</span></div>
+        <div class="card stat"><b id="sGuests">0</b><span>Total guests</span></div>
+        <div class="card stat"><b id="sKids">0</b><span>Children</span></div>
+        <div class="card stat"><b id="sNo">0</b><span>Declined</span></div>
+      </div>
+      <div class="bar">
+        <div class="filters">
+          <button type="button" class="ghost on" data-f="all">All</button>
+          <button type="button" class="ghost" data-f="yes">Attending</button>
+          <button type="button" class="ghost" data-f="no">Declined</button>
+          <button type="button" class="ghost" data-f="msg">With message</button>
+        </div>
+        <input id="search" type="search" placeholder="Search names or messages">
+        <button type="button" class="ghost" id="refresh">Refresh</button>
+      </div>
+      <div id="list" class="list"></div>
+    </section>
+  </div>
+
+  <script>
+    // Same Supabase project as the invitation (public URL + anon key only; the data is protected by the passcode check in the database).
+    const SUPABASE_URL = "https://jcuqwcwkowtjxcykstlf.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_BFtrH3u_sv9zat6B9SALyw_nS7Pajaa";
+
+    const $ = id => document.getElementById(id);
+    let passcode = "", rows = [], filter = "all";
+
+    async function fetchRsvps(code) {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/get_rsvps`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+        },
+        body: JSON.stringify({ passcode: code })
+      });
+      const body = await res.json().catch(() => null);
+      if (!res.ok || !body) throw new Error("Could not load responses. Please try again.");
+      if (body.error === "locked") throw new Error("Too many wrong attempts. Please wait 15 minutes and try again.");
+      if (body.error) throw new Error("Incorrect passcode.");
+      return body.rows || [];
+    }
+
+    function el(tag, cls, text) {
+      const e = document.createElement(tag);
+      if (cls) e.className = cls;
+      if (text != null) e.textContent = text;
+      return e;
+    }
+
+    function render() {
+      const yes = rows.filter(r => r.attendance === "yes");
+      $("sYes").textContent = yes.length;
+      $("sNo").textContent = rows.length - yes.length;
+      $("sGuests").textContent = yes.reduce((n, r) => n + (r.guest_count || 0) + (r.children_count || 0), 0);
+      $("sKids").textContent = yes.reduce((n, r) => n + (r.children_count || 0), 0);
+
+      const q = $("search").value.trim().toLowerCase();
+      const shown = rows.filter(r =>
+        (filter === "all" || (filter === "msg" ? (r.message || "").trim() : r.attendance === filter)) &&
+        (!q || [r.full_name, r.email, r.message, r.dietary_requirements].some(v => (v || "").toLowerCase().includes(q)))
+      );
+
+      const list = $("list");
+      list.replaceChildren();
+      if (!shown.length) { list.append(el("div", "empty", rows.length ? "No responses match." : "No responses yet.")); return; }
+      for (const r of shown) {
+        const c = el("article", "card rsvp");
+        const top = el("div", "top");
+        top.append(el("h3", null, r.full_name));
+        top.append(el("span", `pill ${r.attendance === "yes" ? "yes" : "no"}`, r.attendance === "yes" ? "Attending" : "Declined"));
+        c.append(top);
+        const when = new Date(r.created_at).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" });
+        const bits = [];
+        if (r.attendance === "yes") {
+          bits.push(`${r.guest_count} ${r.guest_count === 1 ? "guest" : "guests"}`);
+          if (r.children_count) bits.push(`${r.children_count} ${r.children_count === 1 ? "child" : "children"}`);
+        }
+        if (r.email) bits.push(r.email);
+        bits.push(when);
+        c.append(el("div", "meta", bits.join(" · ")));
+        if (r.dietary_requirements) c.append(el("div", "diet", `Dietary: ${r.dietary_requirements}`));
+        if ((r.message || "").trim()) c.append(el("p", "msg", r.message));
+        list.append(c);
+      }
+    }
+
+    async function load(code) {
+      rows = await fetchRsvps(code);
+      passcode = code;
+      $("lock").style.display = "none";
+      $("board").style.display = "block";
+      render();
+    }
+
+    $("lock").addEventListener("submit", async e => {
+      e.preventDefault();
+      const code = $("code").value.trim();
+      if (!code) return;
+      $("go").disabled = true; $("err").textContent = "";
+      try { await load(code); }
+      catch (err) { $("err").textContent = err.message; $("code").select(); }
+      finally { $("go").disabled = false; }
+    });
+
+    document.querySelectorAll("[data-f]").forEach(b => b.addEventListener("click", () => {
+      filter = b.dataset.f;
+      document.querySelectorAll("[data-f]").forEach(x => x.classList.toggle("on", x === b));
+      render();
+    }));
+    $("search").addEventListener("input", render);
+    $("refresh").addEventListener("click", async () => {
+      $("refresh").disabled = true;
+      try { await load(passcode); } catch (err) { alert(err.message); } finally { $("refresh").disabled = false; }
+    });
+  </script>
+</body>
+</html>
